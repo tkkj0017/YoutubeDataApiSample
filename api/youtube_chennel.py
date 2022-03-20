@@ -73,10 +73,10 @@ def get_channel_list():
 
 
 # チャンネルをフィルタリングし、出力リストを洗い出す
-def filter_channels():
+def filter_channels(ch_list):
     # チャンネルリスト取得後のフィルター処理
     output_data = []
-    for channel in channel_list:
+    for channel in ch_list:
         print(str(channel['snippet']['title']) + "の情報取得")
 
         # チャンネル詳細情報取得
@@ -147,5 +147,5 @@ def save_excel_file(output_data):
 
 
 channel_list = get_channel_list()
-output = filter_channels()
+output = filter_channels(channel_list)
 save_excel_file(output)
