@@ -2,6 +2,7 @@
 
 ## 実行方法
 ```
-$ cd api
+$ git clone
+$ cd YoutubeDataApiSample/api
 $ python3 youtube_channel.py
 ```
