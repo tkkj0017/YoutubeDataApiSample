@@ -16,6 +16,8 @@ from dateutil import relativedelta
 API_KEY = "%APIキー%"
 # youtube APIクライアント
 youtube = build("youtube", "v3", developerKey=API_KEY)
+# Excelテンプレート
+excel_template = "sample.xlsx"
 
 # 検索条件↓
 # 検索キーワード
@@ -125,7 +127,7 @@ def filter_channels(ch_list):
 # 取得したデータをExcelに出力
 def save_excel_file(output_data):
     # Excelファイルダウンロード
-    wb = openpyxl.load_workbook('sample.xlsx')
+    wb = openpyxl.load_workbook(excel_template)
     ws = wb['channels']
     border = Border(top=Side(style='thin', color='000000'),
                     bottom=Side(style='thin', color='000000'),
