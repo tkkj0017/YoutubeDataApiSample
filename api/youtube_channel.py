@@ -29,13 +29,13 @@ fl_video_count_a_month = 4
 
 
 # 実行時より1ヶ月前の日付を取得
-def get_published_after():
+def get_a_month_ago_date():
     today = date.today()
-    a_month_ago = today + relativedelta.relativedelta(months=-1)
-    dt_native = datetime.combine(a_month_ago, time())
-    published_after = pytz.timezone('Asia/Tokyo').localize(dt_native)
-    iso_published_after = datetime.strftime(published_after, '%Y-%m-%dT%H:%M:%S.%fZ')
-    return iso_published_after
+    a_month_ago_date = today + relativedelta.relativedelta(months=-1)
+    dt_native = datetime.combine(a_month_ago_date, time())
+    a_month_ago_date_tz = pytz.timezone('Asia/Tokyo').localize(dt_native)
+    iso_month_ago_date = datetime.strftime(a_month_ago_date_tz, '%Y-%m-%dT%H:%M:%S.%fZ')
+    return iso_month_ago_date
 
 
 # キーワードからチャンネルを検索
@@ -100,7 +100,7 @@ def filter_channels(ch_list):
         # TODO 「1ヶ月以内投稿数4以上」を調べるためにリクエストを投げるが、ここでAPI使用量の上限に達してしまうため現状保留
         # TODO 対応策... チャンネル登録者数の条件を5000~10000人以上にする(条件厳しくしてリクエスト数を減らす)。API使用量の増枠を申請するetc...
         # # チャンネルIDで動画検索
-        # iso_published_after = get_published_after()
+        # iso_published_after = get_a_month_ago_date()
         # video_response = youtube.search().list(
         #     part='snippet',
         #     channelId=channel['id']['channelId'],
